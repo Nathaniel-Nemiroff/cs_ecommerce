@@ -1,0 +1,20 @@
+<input type=text id=search placeholder="search...">
+<button id=filter>Filter</button>
+
+<h3>Add a new Product</h3>
+<form action="newproduct" method=post>
+	Name:<input type=text name="name"><br>
+	Image (url):<input type=text name="url" placeholder="http://"><br>
+	Description:<input type=text name="desc"><br>
+	Initial Quantity:
+	<input type=number name="quan">
+	<input type=submit value="Create">
+</form>
+
+@{
+	foreach(var i in ViewBag.Products)
+	{
+		<img src=@i.URL>
+		<p>@i.Name <br>(@i.Quantity left)</p>
+	}
+}

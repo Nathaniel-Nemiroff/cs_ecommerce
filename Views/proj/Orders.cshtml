@@ -1,0 +1,43 @@
+<h3>Add a new order</h3>
+<form action="/neworder" method=post>
+	Customer <select name=customer><br>
+		@{
+			foreach(var i in @ViewBag.Users)
+			{
+				<option value="@i.Name">@i.Name</option>
+			}
+		}
+	</select>
+	Order<input type=number name=quantity>
+	<select name=product>
+		@{
+			foreach(var i in @ViewBag.Products)
+			{
+				<option value="@i.Name">@i.Name</option>
+			}
+		}
+	</select>
+
+	<input type=submit value="Order">
+	
+</form>
+
+<input type=input id=filter placeholder="filter...">
+<table>
+	<th>Customer Name</th>
+	<th>Product</th>
+	<th>Quantity</th>
+	<th>Date</th>
+
+	@{
+		foreach(var i in @ViewBag.Orders)
+		{
+			<tr>
+				<td>@i.user.Name</td>
+				<td>@i.product.Name</td>
+				<td>@i.Quantity</td>
+				<td>@i.CreatedAt</td>
+			</tr>
+		}
+	}
+</table>

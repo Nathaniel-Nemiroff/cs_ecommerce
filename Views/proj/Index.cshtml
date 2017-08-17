@@ -1,0 +1,54 @@
+<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+
+
+		})
+	</script>
+</head>
+<body>
+
+	<input type=text id=search placeholder="search...">
+	<button id=filter>Filter</button>
+
+	@{
+		int i = 5;
+		foreach(var j in ViewBag.Products)
+		{
+			if(i-- < 1)
+			{
+				break;
+			}
+			<img src = @j.URL>
+			<p>@j.Name</p>
+			<p>(@j.Quantity left)</p>
+		}
+	}
+
+	<h3>Recent Orders</h3>
+	@{
+		i = 3;
+		foreach(var j in ViewBag.Orders)
+		{
+			if(i-- < 1)
+			{
+				break;
+			}
+			<p>@j.user.Name purchased @j.Quantity @j.product.Name ...(some hours ago)</p>
+		}
+	}
+
+	<h3>New Customers</h3>
+	@{
+		i = 3;
+		foreach(var j in ViewBag.Users)
+		{
+			if(i-- < 1)
+			{
+				break;
+			}
+			<p>@j.Name joined the store (some hours ago)</p>
+		}
+	}
+</body>
